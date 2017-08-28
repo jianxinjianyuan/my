@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Food Senses</title>
+    <link rel="stylesheet" type="text/css" href="./css/newfoodsense.css"/>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+</head>
+<body>
+<div id="wrap">
+    <header id="header">
+        <h1>Food Sense</h1>
+        <nav>
+            <ul>
+                <li><a class="tastemakers " href="#">Tastemakers</a></li>
+                <li><a class="blog" href="#">Blog</a></li>
+                <li><a class="alist" href="#">The A-List</a></li>
+                <li><a class="contribute" href="#">Contribute</a></li>
+                <li><a class="about" href="#">About</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div id="content">
+
+        <div class="bigImgs">
+            <div class="big_img">
+                <img src="img/2.jpg" alt="">
+                <img src="img/3.jpg" alt="">
+                <img src="img/4.jpg" alt="">
+                <img src="img/1.jpg" alt="">
+            </div>
+            <div class="img_text">
+                <a href="JavaScript:void (0);" style="background-color: #D9EFEC">Tastemakers<p>Feast your eyes & get recipes!</p></a>
+                <a href="JavaScript:void (0);">Blog<p>News, how-tos, stories, and more</p></a>
+                <a href="JavaScript:void (0);">The A-List<p>Handpicked, absolute favorites</p></a>
+                <a href="JavaScript:void (0);" >Contribute<p>We want to hear from you!</p></a>
+            </div>
+        </div>
+        <section id="newsletter">
+            <p>Sign up for our newsletter to receive a handpicked selection of the best stories, recipes, and news,
+                delivered weekly to your inbox.</p>
+            <input id="email" type="text" placeholder="Email">
+            <input type="submit" value="Subscribe">
+        </section>
+        <section id="recent">
+            <section id="blog">
+                <article><img src="img/cookbooks_blog.jpg" alt="">
+                    <h1 class="changclo">2012’s Best Summer Cookbooks</h1>
+                    <p>With the best of the season coming from “orchards, farms and gardens,” NPR has put together an
+                        impressive collection of 10 summer cookbooks.</p>
+                    <p class="meta">
+                        <time datetime="2012-05-23T02:41-05:00">May 23, 2012</time>
+                        /
+                        <a class="changclo" href="">Read »</a></p>
+                </article>
+                <article><img src="img/SweetPotatoChips.jpg" alt="">
+                    <h1 class="changclo">How to Make Vegetable Chips</h1>
+                    <p>About a month ago, I ate almost an entire box of kale chips. My brother and I were visiting our
+                        cousin in Brooklyn, and before a very thoughtfully prepared vegan…</p>
+                    <p class="meta">
+                        <time datetime="2012-05-17T08:35-05:00">May 17, 2012</time>
+                        /
+                        <a class="changclo" href="">Read »</a></p>
+                </article>
+                <article><img src="img/Pinterest_Page_featured.png" alt="">
+                    <h1 class="changclo">Join us on Pinterest!</h1>
+                    <p>If I could curate a cookbook for you, this would be it.</p>
+                    <p class="meta">
+                        <time datetime="2012-05-16T09:59-05:00">May 16, 2012</time>
+                        /
+                        <a class="changclo" href="">Read »</a></p>
+                </article>
+                <article><img src="img/Adithi_Dinner_blog.jpg" alt="">
+                    <h1 class="changclo">Recipes from a Sunday Supper</h1>
+                    <p>I could not figure out what to do with the delectable slices of Pear Cake that I brought home
+                        from this wonderful Sunday supper - eat them slowly, a little bit at…</p>
+                    <p class="meta">
+                        <time datetime="2012-05-15T09:42-05:00">May 15, 2012</time>
+                        /
+                        <a class="changclo" href="">Read »</a></p>
+                </article>
+            </section>
+        </section>
+    </div>
+    <aside id="aside">
+        <div class="twitter">
+            <h1>Latest Tweet</h1>
+            <button><a href="">Join the Conversation</a></button>
+        </div>
+        <h1>Let's be friends!</h1>
+        <p>For weekly finds, community recommendations, and more, like us on Facebook.</p>
+        <button><a href="">Join the Community</a></button>
+    </aside>
+    <footer id="footer">
+        <p>
+            <a href="">Privacy Policy</a>|
+            <a href="">Terms of Use</a>|
+            <a href="">Contact</a><br>
+            © 2017 Food Sense, all rights reserved.
+        </p>
+        <div class="social">
+            <a href=""></a>
+            <a href=""></a>
+            <a href=""></a>
+        </div>
+    </footer>
+</div>
+</body>
+<script type="text/javascript">
+    var  bigImgs=document.querySelector(".bigImgs");
+    var big_img=document.querySelectorAll(".big_img>img");
+    var img_text=document.querySelectorAll(".img_text>a");
+    var show=0;
+    var id;
+//    console.log(img_text)
+    function change() {
+        for (let i = 0; i < big_img.length; i++) {
+            big_img[i].style.zIndex = 0;
+            img_text[i].style.backgroundColor = "#EFF8F7";
+//            console.log(big_img[i])
+        }
+        if (show == big_img.length) {
+            show = 0;
+        }
+        big_img[show].style.zIndex = 1;
+        img_text[show].style.backgroundColor = "#D9EFEC";
+        show++;
+    }
+
+    function autoPlay() {
+        id = setInterval(function () {
+            change();
+        }, 5000)
+    }
+    autoPlay();
+
+    for(let i=0;i<img_text.length;i++){
+        img_text[i].onclick=function () {
+            show=i;
+            change()
+        }
+//        console.log(img_text[i])
+    }
+    bigImgs.onmouseenter=function () {
+        clearInterval(id)
+    }
+    bigImgs.onmouseleave=function () {
+        autoPlay()
+    }
+</script>
+</html>
